@@ -1,0 +1,29 @@
+[
+    {
+      "_id": "1",
+      "age": 34,
+      "name": "Luz Booker",
+      "gender": "female",
+      "email": "luzbooker@rodeomad.com",
+      "phone": "+1 (825) 424-3811",
+      "address": "184 Hyman Court, Walland, Iowa, 4142"
+    },
+    {
+      "_id": "2",
+      "age": 25,
+      "name": "Marjorie Vargas",
+      "gender": "female",
+      "email": "marjorievargas@rodeomad.com",
+      "phone": "+1 (814) 442-2893",
+      "address": "448 Vanderveer Place, Freelandville, Michigan, 5181"
+    },
+    {
+      "_id": "3",
+      "age": 23,
+      "name": "Gayle Baxter",
+      "gender": "female",
+      "email": "gaylebaxter@rodeomad.com",
+      "phone": "+1 (978) 557-3822",
+      "address": "540 Atlantic Avenue, Jardine, Guam, 7406"
+    }
+  ]
