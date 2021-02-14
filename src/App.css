@@ -1,0 +1,103 @@
+html{
+  overflow-x: hidden;
+}
+a{
+  text-decoration: none;
+}
+.loading{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: -20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.App{
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar a{
+  padding: 20px 35px;
+  display: inline-block;
+}
+a:hover{
+  background-color: black!important;
+}
+
+.registerWindow{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px auto;
+  height: 450px;
+  width: 400px;
+}
+.formContainer{
+  display: flex;
+  align-items: center;
+  flex: 8;
+}
+.formContainer h2{
+  text-align: center;
+  color: white;
+}
+.formContainer form{
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.formContainer input{
+  border: 0;
+  outline: 0;
+  padding: 10px;
+  font-size: 19px;
+}
+.formContainer input:last-child{
+  cursor: pointer;
+}
+.formNavigation{
+  display: flex;
+  width: 100%;
+  flex: 1;
+  border-top: 1px brown solid;
+}
+.formNavigation a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.formNavigation a:first-child{
+  border-right: 1px brown solid;
+}
+
+.posts .post{
+  padding: 30px;
+  border-bottom: 1px solid brown;
+}
+.posts .post span{
+  font-style: italic;
+}
+
+.themeToggler{
+  position: fixed;
+  right: -20px;
+  bottom: 20px;
+  border: 0;
+  outline: 0;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  transform: rotate(-90deg);
+}
