@@ -7,8 +7,6 @@ const { registerValidation } = require('../middlewares/validation');
 const signUp = async (req, res) => {
     try {
 
-        const { name, email, password } = req.body;
-
         //validate data
         const error = registerValidation(req.body);
         if (error) {
@@ -16,19 +14,22 @@ const signUp = async (req, res) => {
         }
 
         //check if this email is already used
-        const userExists = await User.findOne({ email });
+        const userExists = await User.findOne({ email: req.body.email });
         if (userExists) {
             return res.status(400).json({ error: 'Email already exists.' });
         }
 
         //create new user
-        //const newUser = await new User({ name: name, email: email, password: password}).save();
+        const user = req.body;
+
+        //const newUser = await User.create(user);
 
         /* const salt = await bycrypt.genSalt(10);
         const hashedPass = await bycrypt.hash(req.body.password,salt); */
-        const hashedPass = await bcrypt.hash(password, 10);
-
-        const newUser = await new User({ name: name, email: email, password: hashedPass }).save();
+        const hashedPass = await bcrypt.hash(req.body.password, 10);
+        
+        user.password = hashedPass;
+        const newUser = await User.create(user);
 
         //generate token containing user ID
         const accessTocken = jwt.sign({ id: newUser._id }, process.env.ACCESS_TOKEN_SECRET);

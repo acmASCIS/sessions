@@ -7,7 +7,7 @@ const { logInValidation } = require('../middlewares/validation');
 const signIn = async (req, res) => {
 
     try {
-        const { email, password } = req.body;
+
         //validate data
         const error = logInValidation(req.body);
         if (error) {
@@ -15,13 +15,13 @@ const signIn = async (req, res) => {
         }
 
         //check if user found in db
-        const userFound = await User.findOne({ email });
+        const userFound = await User.findOne({ email: req.body.email });
         if (!userFound) {
             return res.status(400).json({ error: 'Email not found.' });
         }
 
         //compare entered pass with hashed one in db
-        const validPass = await bcrypt.compare(password, userFound.password);
+        const validPass = await bcrypt.compare(req.body.password, userFound.password);
         if (!validPass) {
             return res.status(400).json({ error: 'Wrong password.' });
         }

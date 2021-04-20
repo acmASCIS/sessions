@@ -5,7 +5,7 @@ const validateToken = async (req, res, next) => {
     //authHeader = "Bearer token"
     const token = authHeader && authHeader.split(' ')[1];
     if (!token) {
-        res.status(401).json('Access denied.');
+        return res.status(401).json('Access denied.');
     }
 
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
