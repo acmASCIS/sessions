@@ -27,14 +27,11 @@ const signUp = async (req, res) => {
         /* const salt = await bycrypt.genSalt(10);
         const hashedPass = await bycrypt.hash(req.body.password,salt); */
         const hashedPass = await bcrypt.hash(req.body.password, 10);
-        
+
         user.password = hashedPass;
         const newUser = await User.create(user);
 
-        //generate token containing user ID
-        const accessTocken = jwt.sign({ id: newUser._id }, process.env.ACCESS_TOKEN_SECRET);
-        //send it in response header
-        res.header('auth-token', accessTocken).send("Signed Up.");
+        return res.status(201).json("Signed Up.");
 
     } catch (err) {
         res.status(500).json({

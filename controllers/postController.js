@@ -6,10 +6,10 @@ const createPost = async (req, res) => {
         var post = req.body;
         post.created_by = req.userid;
         post = await Post.create(post);
-        res.status(201).json(post);
+        return res.status(201).json(post);
 
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             status: 'error',
             error: err.message,
         });
@@ -20,10 +20,10 @@ const getPosts = async (req, res) => {
     try {
 
         const posts = await Post.find({ 'created_by': req.userid });
-        res.json(posts);
+        return res.json(posts);
 
     } catch (err) {
-        res.status(500).json({
+        return res.status(500).json({
             status: 'error',
             error: err.message,
         });

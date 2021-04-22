@@ -27,9 +27,9 @@ const signIn = async (req, res) => {
         }
 
         //generate token containing user ID
-        const accessTocken = jwt.sign({ id: userFound._id }, process.env.ACCESS_TOKEN_SECRET);
+        const accessTocken = jwt.sign({ id: userFound._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30s' });
         //send it in response header
-        res.header('auth-token', accessTocken).send("Signed In.");
+        return res.header('auth-token', accessTocken).send("Signed In.");
 
     } catch (err) {
         res.status(500).json({
